@@ -46,6 +46,8 @@ export var todosReducer = (state = [], action) => {
 					};
 
 					
+				} else {
+					return todo;
 				}
 			});
 
