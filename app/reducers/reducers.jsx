@@ -8,8 +8,8 @@ export var searchTextReducer = (state = '', action) => {
 			return action.searchText;
 		default:
 			return state;
-	}
-}
+	};
+};
 
 export var showCompletedReducer = (state = false, action) => {
 	switch(action.type){
@@ -35,25 +35,17 @@ export var todosReducer = (state = [], action) => {
 				...action.todos
 			];
 
-		case 'TOGGLE_TODO':
+		case 'UPDATE_TODO':
 			return state.map((todo) => {
 				if(todo.id === action.id) {
-					var nextCompleted = !todo.completed;
-					
 					return {
 						...todo,
-						completed: nextCompleted,
-						completedAt: nextCompleted ? moment().unix() : undefined
+						...action.updates
 					};
-
-					
 				} else {
 					return todo;
 				}
 			});
-
-			
-
 		default:
 			return state;
 	}

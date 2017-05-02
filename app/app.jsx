@@ -9,18 +9,9 @@ var actions = require('actions');
 var store = require('configureStore').configure();
 var TodoAPI = require('TodoAPI');
 
-// import './../playground/firebase/index';
+// Make async call to firebase to fetch todos
+store.dispatch(actions.startAddTodos());
 
-store.subscribe(() => {
-	var state = store.getState();
-	console.log('New state', state);
-	TodoAPI.setTodos(state.todos);
-});
-
-// bulk add todos from local storage
-
-var initialTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initialTodos));
 
 // Load foundation
 $(document).foundation();
@@ -34,3 +25,22 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app'));
 
+
+
+
+
+
+
+
+
+
+/*store.subscribe(() => {
+	var state = store.getState();
+	console.log('New state', state);
+	TodoAPI.setTodos(state.todos);
+});*/
+
+// bulk add todos from local storage
+
+/*var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));*/
