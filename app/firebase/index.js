@@ -2,12 +2,11 @@ import firebase from 'firebase';
 
 try {
 	var config = {
-	    apiKey: "AIzaSyAlcZf-Jb0entHOBdDJd8l1WuLtitbUgLA",
-	    authDomain: "bell-todo-app.firebaseapp.com",
-	    databaseURL: "https://bell-todo-app.firebaseio.com",
-	    projectId: "bell-todo-app",
-	    storageBucket: "bell-todo-app.appspot.com",
-	    messagingSenderId: "642371027946"
+	    apiKey: process.env.API_KEY,
+	    authDomain: process.env.AUTH_DOMAIN,
+	    databaseURL: process.env.DATABASE_URL,
+	    storageBucket: process.env.STORAGE_BUCKET
+	    
   	};
 
   	firebase.initializeApp(config);
