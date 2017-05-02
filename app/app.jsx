@@ -8,7 +8,7 @@ var TodoApp= require('TodoApp');
 var actions = require('actions');
 var store = require('configureStore').configure();
 var TodoAPI = require('TodoAPI');
-
+import Login from 'Login';
 // Make async call to firebase to fetch todos
 store.dispatch(actions.startAddTodos());
 
@@ -21,7 +21,16 @@ require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
   <Provider store= {store}>
-  	<TodoApp/>
+  	
+  	<Router history = {hashHistory}>
+  		<Route path="/">
+			<IndexRoute component={Login} />
+  			<Route path="todos" component={TodoApp}/>
+  		</Route>
+  		
+  		
+  	</Router>
+  	
   </Provider>,
   document.getElementById('app'));
 
@@ -40,7 +49,4 @@ ReactDOM.render(
 	TodoAPI.setTodos(state.todos);
 });*/
 
-// bulk add todos from local storage
 
-/*var initialTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initialTodos));*/
