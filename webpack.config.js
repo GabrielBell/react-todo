@@ -8,8 +8,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 try {
   envFile(path.join(__dirname, 'config/' + process.env.NODE_ENV + '.env'));
+  console.log(process.env.NODE_ENV);
 } catch(e) {
-
+  console.log("unable to load environment variables", e)
 }
 
 module.exports = {
